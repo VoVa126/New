@@ -102,9 +102,9 @@ if ($errors) {
     exit();
 }
 
-$user = 'u67439';
-$pass = '4415842';
-$db = new PDO('mysql:host=localhost;dbname=u67439', $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+$user = 'u67448';
+$pass = '2263728';
+$db = new PDO('mysql:host=localhost;dbname=u67448', $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 foreach ($_POST['languages'] as $language) {

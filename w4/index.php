@@ -165,8 +165,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $biography = isset($_POST['biography']) ? $_POST['biography'] : '';
   $languages = isset($_POST['languages']) ? $_POST['languages'] : array();
 
-  $user = 'u67501';
-  $pass = '1064664';
+  $user = 'u67448';
+  $pass = '2263728';
   $db = new PDO('mysql:host=localhost;dbname=u67501', $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
   $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

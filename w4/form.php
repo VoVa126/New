@@ -28,22 +28,22 @@
   <form action="index.php" method="POST">
     <div class="form-group">
       <label for="names">Имя:</label>
-      <input type="text" name="names" id="names" value="<?= $values['names'] ?>" class="<?= $errors['names'] ? 'error' : '' ?>">
+      <input type="text" name="names" id="names" value="<?= htmlspecialchars($values['names']) ?>" class="<?= $errors['names'] ? 'error' : '' ?>">
     </div>
 
     <div class="form-group">
       <label for="phone">Телефон:</label>
-      <input type="text" name="phone" id="phone" value="<?= $values['phone'] ?>" class="<?= $errors['phone'] ? 'error' : '' ?>">
+      <input type="text" name="phone" id="phone" value="<?= htmlspecialchars($values['phone']) ?>" class="<?= $errors['phone'] ? 'error' : '' ?>">
     </div>
 
     <div class="form-group">
       <label for="email">Почта:</label>
-      <input type="email" name="email" id="email" value="<?= $values['email'] ?>" class="<?= $errors['email'] ? 'error' : '' ?>">
+      <input type="email" name="email" id="email" value="<?= htmlspecialchars($values['email']) ?>" class="<?= $errors['email'] ? 'error' : '' ?>">
     </div>
 
     <div class="form-group">
       <label for="date">Дата:</label>
-      <input type="date" name="date" id="date" value="<?= $values['date'] ?>" class="<?= $errors['date'] ? 'error' : '' ?>">
+      <input type="date" name="date" id="date" value="<?= htmlspecialchars($values['date']) ?>" class="<?= $errors['date'] ? 'error' : '' ?>">
     </div>
 
     <div class="form-group">
@@ -65,7 +65,7 @@
 
     <div class="form-group">
       <label for="biography">Биография:</label>
-      <textarea name="biography" id="biography" class="<?= $errors['biography'] ? 'error' : '' ?>"><?= $values['biography'] ?></textarea>
+      <textarea name="biography" id="biography" class="<?= $errors['biography'] ? 'error' : '' ?>"><?= htmlspecialchars($values['biography']) ?></textarea>
     </div>
 
     <div class="form-group">

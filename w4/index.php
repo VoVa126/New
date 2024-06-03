@@ -167,7 +167,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
   $user = 'u67448';
   $pass = '2263728';
-  $db = new PDO('mysql:host=localhost;dbname=u67501', $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+  $db = new PDO('mysql:host=localhost;dbname=u67448', $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
   $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
   foreach ($languages as $language) {

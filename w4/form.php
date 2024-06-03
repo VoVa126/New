@@ -1,101 +1,81 @@
 <!DOCTYPE html>
-<html lang="ru">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Форма</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Form</title>
+  <style>
+    .error {
+      border: 1px solid red;
+      background-color: #fdd;
+    }
+    .form-container {
+      margin: 10px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+  </style>
 </head>
-
 <body>
-<?php
-if (!empty($messages)) {
-  print('<div id="messages">');
-  // Выводим все сообщения.
-  foreach ($messages as $message) {
-    print($message);
-  }
-  print('</div>');
-}
-?>
-    <div class="fon1 tab mt-4 mb-4 shadow rounded" id="quf">
-        <form action="index.php" method="POST" class="row mx-5 my-2 gy-1">
-        <!-- ФИО -->
-    <div class="form_item form-group">
-        <label for="formName" style="color: black;">ФИО:</label>
-        <input name="names" class="<?php if ($errors['names']) {print 'error';} ?> form-control w-50 shadow bg-white rounded" value="<?php print $values['names']; ?>" />
+  <?php if (!empty($messages)): ?>
+    <div class="form-container">
+      <?php foreach ($messages as $message): ?>
+        <p><?= $message ?></p>
+      <?php endforeach; ?>
+    </div>
+  <?php endif; ?>
+
+  <form action="index.php" method="POST">
+    <div class="form-group">
+      <label for="names">Имя:</label>
+      <input type="text" name="names" id="names" value="<?= $values['names'] ?>" class="<?= $errors['names'] ? 'error' : '' ?>">
     </div>
 
-    <!-- Телефон -->
-    <div class="form_item form-group">
-        <label for="formTel" style="color: black;">Телефон:</label>
-        <input name="phone" class="<?php if ($errors['phone']) {print 'error';} ?> form-control w-50 shadow bg-white rounded" value="<?php print $values['phone']; ?>" />
+    <div class="form-group">
+      <label for="phone">Телефон:</label>
+      <input type="text" name="phone" id="phone" value="<?= $values['phone'] ?>" class="<?= $errors['phone'] ? 'error' : '' ?>">
     </div>
 
-    <!-- E-mail -->
-    <div class="form_item form-group">
-        <label for="formEmail" style="color: black;">E-mail:</label>
-        <input name="email" class="<?php if ($errors['email']) {print 'error';} ?> form-control w-50 shadow bg-white rounded" value="<?php print $values['email']; ?>" />
+    <div class="form-group">
+      <label for="email">Почта:</label>
+      <input type="email" name="email" id="email" value="<?= $values['email'] ?>" class="<?= $errors['email'] ? 'error' : '' ?>">
     </div>
 
-    <!-- Дата рождения -->
-    <div class="form_item form-group">
-        <label for="formDate" style="color: black;">Дата рождения:</label>
-        <input name="date" class="<?php if ($errors['date']) {print 'error';} ?> form-control w-50 shadow bg-white rounded" value="<?php print $values['date']; ?>" />
+    <div class="form-group">
+      <label for="date">Дата:</label>
+      <input type="date" name="date" id="date" value="<?= $values['date'] ?>" class="<?= $errors['date'] ? 'error' : '' ?>">
     </div>
 
-    <!-- Пол -->
-    <div class="form_item form-group">
-        <label style="color: black;">Пол:</label><br>
-        <div class="form-check1 form-check-inline">
-            <input class="form-check-input" type="radio" name="gender" id="Sex1" value="m">
-            <label class="form-check-label" for="Sex1">Мужской</label>
-        </div>
-        <div class="form-check1 form-check-inline">
-            <input class="form-check-input" type="radio" name="gender" id="Sex2" value="f">
-            <label class="form-check-label" for="Sex2">Женский</label>
-        </div>
+    <div class="form-group">
+      <label for="gender">Пол:</label>
+      <input type="radio" name="gender" value="male" <?= $values['gender'] === 'male' ? 'checked' : '' ?>>Мужской
+      <input type="radio" name="gender" value="female" <?= $values['gender'] === 'female' ? 'checked' : '' ?>>Женский
+      <div class="<?= $errors['gender'] ? 'error' : '' ?>"></div>
     </div>
 
-    <!-- Любимый язык программирования -->
-    <div class="form_item form-group">
-        <label for="multipleLanguages" style="color: black;">Любимый язык программирования:</label>
-        <select multiple class="<?php if ($errors['languages']) {print 'error';} ?> form-control w-50 shadow bg-white rounded" id="multipleLanguages" name="languages[]">
-            <option value="1">Pascal</option>
-              <option value="2">C</option>
-              <option value="3">C++</option>
-              <option value="4">JavaScript</option>
-              <option value="5">PHP</option>          
-              <option value="6">Python</option>
-              <option value="7">Java</option>
-              <option value="8">Haskel</option>
-              <option value="9">Clojure</option>
-              <option value="10">Prolog</option>
-        </select>
+    <div class="form-group">
+      <label for="languages">Языки программирования:</label>
+      <select name="languages[]" id="languages" multiple class="<?= $errors['languages'] ? 'error' : '' ?>">
+        <option value="1" <?= in_array('1', $values['languages']) ? 'selected' : '' ?>>PHP</option>
+        <option value="2" <?= in_array('2', $values['languages']) ? 'selected' : '' ?>>JavaScript</option>
+        <option value="3" <?= in_array('3', $values['languages']) ? 'selected' : '' ?>>Python</option>
+        <option value="4" <?= in_array('4', $values['languages']) ? 'selected' : '' ?>>Ruby</option>
+      </select>
     </div>
 
-    <!-- Биография -->
-    <div class="form_item form-group">
-        <label for="formMessage" style="color: black;">Биография:</label>
-        <textarea id="formMessage" name="biography" class="<?php if ($errors['biography']) {print 'error';} ?> form-control w-50 shadow bg-white rounded"><?php print $values['biography']; ?></textarea>
+    <div class="form-group">
+      <label for="biography">Биография:</label>
+      <textarea name="biography" id="biography" class="<?= $errors['biography'] ? 'error' : '' ?>"><?= $values['biography'] ?></textarea>
     </div>
 
-    <!-- Соглашение -->
-    <div class="form_item form-group">
-        <div class="form-check">
-            <label class="checkbox_label form-check-label" for="agree">С контрактом ознакомлен(а)</label>
-            <input id="agree" type="checkbox" name="agree" class="<?php if ($errors['agree']) {print 'error';} ?> form-check-input">
-        </div>
+    <div class="form-group">
+      <label for="agree">Согласие с условиями:</label>
+      <input type="checkbox" name="agree" id="agree" <?= $values['agree'] ? 'checked' : '' ?> class="<?= $errors['agree'] ? 'error' : '' ?>">
     </div>
 
-    <!-- Кнопка отправки формы -->
-    <div class="form_item form-group">
-        <label class="col-12"><input type="submit" value="Сохранить" name="submit" class="submit btn-dark"></label>
+    <div class="form-group">
+      <input type="submit" value="Отправить">
     </div>
-        </form>
-    </div>
+  </form>
 </body>
+</html>
